@@ -79,12 +79,19 @@ final class MermaidUmlConverter implements Converter {
 
   @override
   String convertStartClass(final ClassDef def) {
-    return 'class ${def.name} {\n';
+    return 'class ${def.name} ${showBraces(def) ? '{' : ''}\n';
   }
 
   @override
   String convertEndClass(final ClassDef def) {
+    if (showBraces(def)) {
+      return '}\n';
+    }
     return '}\n';
+  }
+
+  bool showBraces(final ClassDef def) {
+    return def.methods.isNotEmpty || def.fields.isNotEmpty ;
   }
 
   @override
