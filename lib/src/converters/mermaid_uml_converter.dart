@@ -87,7 +87,7 @@ final class MermaidUmlConverter implements Converter {
     if (showBraces(def)) {
       return '}\n';
     }
-    return '}\n';
+    return '\n';
   }
 
   bool showBraces(final ClassDef def) {
